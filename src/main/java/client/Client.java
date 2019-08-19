@@ -4,14 +4,10 @@ import com.proto.MyRPCGrpc;
 import com.proto.MyThing;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
 public class Client {
-
-    private static final Logger logger = LoggerFactory.getLogger(Client.class);
 
     private final ManagedChannelBuilder<?> managedChannelBuilder;
 
@@ -43,6 +39,6 @@ public class Client {
     public void sayHi(String name) {
         MyThing.Request request = MyThing.Request.newBuilder().setName(name).build();
         MyThing.Response response = blockingStub.sayHi(request);
-        logger.info(response.getName());
+        System.out.println(response.getName());
     }
 }
