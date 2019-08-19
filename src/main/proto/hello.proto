@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.proto";
+option java_outer_classname = "MyThing";
+
+message Request {
+    string name = 1;
+}
+message Response {
+    string name = 2;
+}
+service MyRPC {
+    rpc sayHi(Request) returns(Response);
+}
