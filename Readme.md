@@ -51,12 +51,15 @@ http {
     gzip  on;
 
     upstream grpcservers {
-        server 127.0.0.1:2222;
-   	server 127.0.0.1:2223;
+        server 192.168.1.17:9995;
+   	    server 192.168.1.102:9995;
+   	    server 192.168.1.171:9995;
     }
 
     server {
-        listen       8080 http2;
+        listen       9993 http2;
+        ## 限制整个请求标头列表的最大大小
+        http2_max_requests 3000;
         server_name  localhost;
 
         location / {
